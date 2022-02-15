@@ -1,30 +1,22 @@
 <?php
 
+use LDAP\Result;
 
-if (isset($_POST['email'])){
+include "connecte.php";
 
-    function validate($data){
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-    }
-
-    $email = validate($_POST['email']);
-    $pass = validate($_POST['password']);
-    if (empty($email)){
-        header("Location: index.php?error=User Name is required");
-        exit();
-
-    }else if (empty($pass)){
-        header("Location: index.php?error=Password is required");
-        exit();
-
-    }else{
-        echo "valid input";
-    }
-
-}else {
-    header("Location: aa.php");
-    exit();
+$email = $_POST['email'];
+$password = $_POST['password'];
+$sql="SELECT * FROM comptes WHERE email='$email' AND password='$password'";
+$query=mysqli_query($conn , $sql);
+$result=mysqli_fetch_assoc($query);
+if($result){
+    session_start();
+    $_SESSION['username']=$result['username'];
+    $_SESSION['email']=$result['email'];
+    $_SESSION['password']=$result['password'];
+    setcookie('email' , $_SESSION['email'] , time()+20 , "/");
+    setcookie('password' , $_SESSION['password'] , time()+20 , "/");
+    header("location:home.php");
+}else{
+    header("location:index.php?error=User Name or password is incorrect");
 }

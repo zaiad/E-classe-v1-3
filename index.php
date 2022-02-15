@@ -10,16 +10,25 @@
 <html>
  <body style="background-image: linear-gradient(to right, #01c1fe , #f8fec1);">
 
-    <main style="max-width: 500px; border-radius: 10px; background-color: white; margin: auto; margin-top: 40px;" class="form-signin" >
+    <main style="max-width: 500px; border-radius: 10px; background-color: white; margin: auto; margin-top: 40px;" class="form-signin pt-3" >
         <form action="aa.php" method="post">
-            <h1 style="padding: 20px 0px 0px 80px;">E-classe</h1>
-            <h2 style="font-size: 50px; text-align: center;" class="h3 mb-3 fw-normal">sign in</h2>
-            <?php if (isset($_GET['error'])){ ?>
-                <p class="error"><?php echo $_GET['error']; ?></p>
-                <?php } ?> 
+            <h2 class="border-start border-4 border-info ms-4">E-classe</h2>
+            <h4 style="font-size: 50px; text-align: center;" class="mb-3 fw-normal">sign in</h4>
+            <?php if (isset($_GET['error'])){
+                echo'
+                    <div class="alert alert-danger w-75 text-center mx-auto p-2">
+                        <strong>Danger!</strong> Email or Password is incorrect.
+                    </div>
+                ';
+                }
+                else{
+                    echo '<p style="color: gray; text-align: center;">Enter your credentials to access your account</p>';
+                }
+            ?> 
+                
 
 
-            <p style="color: gray; text-align: center;">Enter your credentials to access your account</p>
+            
             <div style="margin: auto; width: 80%; color: gray;" class="Enter">
                 <div class="Name">
                     <label for="usr">Email</label>
@@ -28,7 +37,11 @@
                 <div class="password">
                     <label style="margin-top: 20px" for="psw">Password</label>
                     <input name="password" style="margin-top: 10px;" type="password" class="form-control" id="psw" placeholder= "Enter your password">
-                    <button style="margin-top: 40px; background-color: #00C1FE" class="w-100 btn btn-lg " type="submit">Sign in</button>
+                    <div class="form-group">
+                        <input type="checkbox" name="remember" class="mt-3">
+                        <label for="remember-me">remember me</label>
+                    </div>
+                    <button style="margin-top: 20px; background-color: #00C1FE" class="w-100 btn btn-lg " type="submit">Sign in</button>
                     <li style=" margin-top: 20px; text-align: center; list-style:none;">forgot your password? <a href="#" style="color:skyblue; padding: 0px 0px 5px 0px;"  class="btn">Reset password</a></li>
                 </div>
             </div>

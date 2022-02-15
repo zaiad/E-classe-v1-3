@@ -1,9 +1,4 @@
 <?php 
-
-
-
-
-
 if (isset($_POST['delete'])){
   $id =$_POST['delete'];
 

@@ -1,6 +1,7 @@
 <?php 
 
 include "connecte.php";
+include ("verification.php");
 if(isset($_GET['id'])){
     $id= $_GET['id'];
     $query="SELECT * FROM students WHERE id = $id";

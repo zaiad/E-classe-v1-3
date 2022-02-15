@@ -1,5 +1,4 @@
 <div class="navbar navbar-light bg-white ">
-
 <div class="container-fluid">
   <label id="hum-menu" for="check">&#9776;</label>
   <label id="lab" for="check-v"><i class="bi bi-caret-left-square"></i></label>
